@@ -1,0 +1,77 @@
+.app-download {
+    background-color: #f8f8f8; /* Matches footer background */
+    padding: 40px 30px; /* Slightly larger padding for a "little big" feel */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Slightly larger gap */
+  }
+  
+  .app-download p {
+    font-size: 24px; /* Increased from 20px for a "little big" effect */
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  .app-download p br {
+    display: block; /* Ensure line break is respected */
+  }
+  
+  .app-download-platforms {
+    display: flex;
+    gap: 20px; /* Slightly larger gap between icons */
+    justify-content: center;
+  }
+  
+  .app-download-platforms img {
+    width: 150px; /* Increased from 120px for a "little big" effect */
+    height: auto;
+    background-color: #000; /* Black background for images */
+    padding: 8px; /* Slightly larger padding */
+    border-radius: 10px; /* Slightly larger rounded corners */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .app-download-platforms img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .app-download-platforms img:active {
+    transform: scale(0.95);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .app-download {
+      padding: 30px 20px; /* Adjusted for smaller screens */
+    }
+  
+    .app-download p {
+      font-size: 20px; /* Slightly smaller but still larger than original */
+    }
+  
+    .app-download-platforms img {
+      width: 120px; /* Adjusted for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .app-download {
+      padding: 20px 10px;
+    }
+  
+    .app-download p {
+      font-size: 18px;
+    }
+  
+    .app-download-platforms img {
+      width: 100px;
+    }
+  }

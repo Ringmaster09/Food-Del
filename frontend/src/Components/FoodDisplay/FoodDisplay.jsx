@@ -4,7 +4,7 @@ import { StoreContext } from '../../Context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
 
 const FoodDisplay = ({ category }) => {
-    
+    // Safe context access with fallback
     const { food_list = [] } = useContext(StoreContext) || {};
     
     return (

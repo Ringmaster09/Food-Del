@@ -4,10 +4,12 @@ import Navbar from './Components/Navbar/Navbar'
 import Cart from './Pages/Cart/Cart'
 import Home from './Pages/Home/Home'
 import PlaceOrder from './Pages/PlaceOrder/PlaceOrder'
+import Footer from './Components/Footer/Footer'
 
 
 const App = () => {
   return (
+    <>
     <div className='app'>
       <Navbar/>
       <Routes>
@@ -17,6 +19,8 @@ const App = () => {
       </Routes>
      
     </div>
+    <Footer/>
+    </>
   )
 }
 
