@@ -1,0 +1,202 @@
+.cart {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 40px 0;
+  }
+  
+  .cart-items {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  
+  .cart-items-title {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    font-weight: 600;
+    padding: 15px 0;
+    align-items: center;
+    color: #495057;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .cart-items-title p {
+    text-align: center;
+  }
+  
+  hr {
+    display: none;
+  }
+  
+  .cart-items-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s;
+  }
+  
+  .cart-items-item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .cart-items-item p {
+    text-align: center;
+    margin: 0;
+    color: #212529;
+    font-size: 1rem;
+  }
+  
+  .cart-items-item p:first-child {
+    font-weight: 500;
+  }
+  
+  .cart-items-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 auto;
+    font-weight: 500;
+    width: fit-content;
+  }
+  
+  .cart-items-item button:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-1px);
+  }
+  
+  /* Empty cart message */
+  .cart-items > p {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
+  
+  /* Cart summary section */
+  .cart-summary {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+  
+  .cart-total {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .cart-total h3 {
+    margin-top: 0;
+    color: #212529;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+  }
+  
+  .cart-total div {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 1.1rem;
+  }
+  
+  .cart-total button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  
+  .cart-total button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .cart-items-title,
+    .cart-items-item {
+      grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 1fr;
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cart-items {
+      width: 95%;
+      padding: 20px 15px;
+    }
+    
+    .cart-items-title,
+    .cart-items-item {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    .cart-items-title p:nth-child(4),
+    .cart-items-title p:nth-child(5),
+    .cart-items-item p:nth-child(4),
+    .cart-items-item p:nth-child(5) {
+      display: none;
+    }
+    
+    .cart-summary {
+      justify-content: center;
+    }
+    
+    .cart-total {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .cart {
+      padding: 20px 0;
+    }
+    
+    .cart-items-title,
+    .cart-items-item {
+      grid-template-columns: 1fr 1fr;
+      font-size: 0.9rem;
+    }
+    
+    .cart-items-title p:nth-child(3),
+    .cart-items-item p:nth-child(3) {
+      display: none;
+    }
+    
+    .cart-items-item button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+  }
+  .cart-items-item img {
+    width: 300px;
+    height: 00px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-right: 10px;
+  }
