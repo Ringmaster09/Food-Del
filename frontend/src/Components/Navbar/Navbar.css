@@ -1,142 +1,303 @@
+/* Navbar.css */
 .navbar {
-    background-color: #fff;
-    padding: 20px 40px; /* Increased from 15px 30px */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
   }
   
-  .navbar .logo {
-    width: 120px; /* Increased from 100px */
-    background-color: #000; /* Black background for logo */
-    padding: 6px; /* Slightly increased padding */
-    border-radius: 5px;
+  .navbar:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
   }
   
+  /* Logo styling */
+  .logo {
+    height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Navigation menu */
   .navbar-menu {
     display: flex;
     list-style: none;
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
-    gap: 35px; /* Increased from 30px */
+    align-items: center;
   }
   
   .navbar-menu a {
     text-decoration: none;
-    font-size: 18px; /* Increased from 16px */
-    font-weight: 500;
     color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
     text-transform: capitalize;
-    transition: color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 0.5px;
   }
   
   .navbar-menu a:hover {
-    color: #ff6347;
-    transform: scale(1.05);
+    color: #ff6b35;
+    background: rgba(255, 107, 53, 0.1);
+    transform: translateY(-2px);
   }
   
   .navbar-menu a.active {
-    color: #ff6347;
+    color: #ff6b35;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%);
+    border: 2px solid rgba(255, 107, 53, 0.3);
     font-weight: 600;
-    border-bottom: 2px solid #ff6347;
   }
   
+  .navbar-menu a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #ff6b35;
+    border-radius: 50%;
+  }
+  
+  /* Right side container */
   .navbar-right {
     display: flex;
     align-items: center;
-    gap: 25px; /* Increased from 20px */
+    gap: 1.5rem;
   }
   
-  .navbar-right img {
-    width: 28px; /* Increased from 24px */
-    height: 28px;
+  /* Search icon */
+  .navbar-right > img {
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
   }
   
-  .navbar-right img:hover {
+  .navbar-right > img:hover {
+    background: rgba(255, 107, 53, 0.1);
     transform: scale(1.1);
   }
   
+  /* Basket icon container */
   .navbar-search-icon {
-    position: relative;
     display: flex;
     align-items: center;
+    gap: 1.5rem;
+    position: relative;
   }
   
-  .navbar-search-icon .dot {
-    position: absolute;
-    top: -6px; /* Adjusted for larger icon */
-    right: -6px;
-    width: 12px; /* Increased from 10px */
-    height: 12px;
-    background-color: #ff6347;
+  .navbar-search-icon img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px;
     border-radius: 50%;
-    border: 2px solid #fff;
   }
   
-  /* Responsive adjustments */
+  .navbar-search-icon img:hover {
+    background: rgba(255, 107, 53, 0.1);
+    transform: scale(1.1);
+  }
+  
+  /* Notification dot */
+  .dot {
+    position: absolute;
+    top: 2px;
+    right: 140px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Beautiful Black Sign In Button */
+  .button {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  .button:hover::before {
+    left: 100%;
+  }
+  
+  .button:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 50%, #1a1a1a 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .button:active {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 0 3px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Responsive Design */
   @media (max-width: 768px) {
     .navbar {
-      padding: 15px 25px; /* Adjusted */
+      padding: 1rem;
+      flex-wrap: wrap;
     }
-  
-    .navbar .logo {
-      width: 100px; /* Adjusted from 80px */
-    }
-  
+    
     .navbar-menu {
-      gap: 25px; /* Adjusted */
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-  
+    
     .navbar-menu a {
-      font-size: 16px; /* Adjusted from 14px */
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
     }
-  
-    .navbar-right img {
-      width: 24px; /* Adjusted from 20px */
-      height: 24px;
+    
+    .navbar-right {
+      gap: 1rem;
     }
-  
-    .navbar-search-icon .dot {
-      width: 10px; /* Adjusted from 8px */
-      height: 10px;
-      top: -5px;
-      right: -5px;
+    
+    .button {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    
+    .dot {
+      right: 120px;
     }
   }
   
   @media (max-width: 480px) {
     .navbar {
       flex-direction: column;
-      gap: 15px; /* Adjusted */
-      padding: 15px;
+      gap: 1rem;
+      padding: 1rem;
     }
-  
-    .navbar .logo {
-      width: 90px; /* Adjusted from 70px */
-    }
-  
+    
     .navbar-menu {
-      gap: 20px;
+      order: 3;
+      width: 100%;
       justify-content: center;
+      gap: 0.5rem;
     }
-  
+    
     .navbar-menu a {
-      font-size: 14px; /* Adjusted from 13px */
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
     }
-  
+    
     .navbar-right {
-      gap: 20px;
+      order: 2;
     }
+    
+    .button {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.8rem;
+    }
+    
+    .dot {
+      right: 100px;
+    }
+  }
   
-    .navbar-right img {
-      width: 22px; /* Adjusted from 18px */
-      height: 22px;
+  /* Enhanced focus states for accessibility */
+  .navbar-menu a:focus,
+  .navbar-right img:focus {
+    outline: 2px solid #ff6b35;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Smooth loading animation */
+  .navbar {
+    animation: slideDown 0.5s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
