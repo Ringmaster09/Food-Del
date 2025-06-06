@@ -10,7 +10,7 @@ const Cart = () => {
     return <div>Error: StoreContext is not available. Please ensure the provider is set up.</div>;
   }
 
-  const { cartItems, food_list, removeFromCart } = context;
+  const { cartItems, food_list, removeFromCart,getTotalCartAmount } = context;
 
   return (
     <div className='cart'>
@@ -47,6 +47,36 @@ const Cart = () => {
           <p>No items in cart.</p>
         )}
       </div>
+       <div className="cart-bottom">
+        <div className="cart-total">
+          <h2>Cart Total</h2>
+          <div className="cart-total-details">
+            <p>Subtotal</p>
+            <p>${getTotalCartAmount}</p>
+          </div>
+          <hr/>
+          <div className="cart-total-details">
+            <p>Delivery Fee</p>
+            <p>${2}</p>
+          </div>
+          <hr/>
+          <div className="cart-total-details">
+            <b>Total</b>
+            <b>${getTotalCartAmount()+2}</b>
+          </div>
+         
+        </div>
+        <button>Proceed To Checkout</button>
+       </div>
+       <div className="cart-promocode">
+        <div>
+          <p>if you have promo code enter it here</p>
+          <div className="cart-promocode-input">
+            <input type="text" placeholder='promo code'/>
+            <button>Submit</button>
+          </div>
+        </div>
+       </div>
     </div>
   );
 };
