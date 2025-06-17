@@ -1,32 +1,26 @@
-import express from "express"
-import cors from "cors"
-import { connectDB } from "./config/db.js"
+import express from 'express';
+import { connectDB } from './config/db.js';
+import dotenv from 'dotenv';
+import foodRouter from './routes/foodRoute.js';
 
+dotenv.config(); // Load .env first
 
+const app = express();
 
+// 👇 Middleware to parse JSON body
+app.use(express.json());
 
-
-//app config
-const app=express()
-const port = 4000
-
-
-
-
-//middleware
-app.use(express.json())
-app.use(cors())
-
-//db connection
+// Connect to MongoDB
 connectDB();
 
-app.get("/",(req,res)=>{
-    res.send("API Working")
-})
+// 👇 Use your routes AFTER body parsing middleware
+app.use("/api/food", foodRouter);
 
-app.listen(port,()=>{
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
-    console.log(`Server Started on http://localhost:${port}`)
-})
-
-
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(` Server Started on http://localhost:${PORT}`);
+});
