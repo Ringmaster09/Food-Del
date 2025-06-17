@@ -1,26 +1,26 @@
 import express from 'express';
-import { connectDB } from './config/db.js';
 import dotenv from 'dotenv';
+import { connectDB } from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
 
-dotenv.config(); // Load .env first
-
+dotenv.config();
 const app = express();
 
-// 👇 Middleware to parse JSON body
-app.use(express.json());
-
-// Connect to MongoDB
+// MongoDB Connection
 connectDB();
 
-// 👇 Use your routes AFTER body parsing middleware
-app.use("/api/food", foodRouter);
+// Middleware
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+
+// Routes
+app.use('/api/food', foodRouter);
 
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.send('🍽️ Food Delivery API running...');
 });
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(` Server Started on http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });

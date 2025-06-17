@@ -1,15 +1,15 @@
-import express from "express";
-import multer from "multer";
-import path from "path";
-import fs from "fs";
-import { addFood } from "../controllers/foodController.js";
+import express from 'express';
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
+import { addFood, listFoods } from '../controllers/foodController.js';
 
 const foodRouter = express.Router();
 
-// Ensure 'uploads' folder exists
-const uploadDir = path.resolve("uploads");
+// Ensure uploads folder exists
+const uploadDir = path.resolve('uploads');
 if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+  fs.mkdirSync(uploadDir);
 }
 
 // Multer setup
@@ -22,10 +22,10 @@ const storage = multer.diskStorage({
     cb(null, uniqueName);
   },
 });
-
 const upload = multer({ storage });
 
-// Route: POST /api/food/add
-foodRouter.post("/add", upload.single("image"), addFood);
+// Routes
+foodRouter.post('/add', upload.single('image'), addFood);
+foodRouter.get('/', listFoods);
 
 export default foodRouter;
