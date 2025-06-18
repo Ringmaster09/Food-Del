@@ -1,5 +1,6 @@
 import foodModel from '../models/foodModel.js';
 
+// Add new food
 export const addFood = async (req, res) => {
   try {
     const { description, category } = req.body;
@@ -9,7 +10,7 @@ export const addFood = async (req, res) => {
     if (!description || !price || !category || !image) {
       return res.status(400).json({
         success: false,
-        message: 'All fields are required',
+        message: 'All fields (description, price, category, image) are required',
       });
     }
 
@@ -26,6 +27,7 @@ export const addFood = async (req, res) => {
   }
 };
 
+// List all foods
 export const listFoods = async (req, res) => {
   try {
     const foods = await foodModel.find().sort({ createdAt: -1 });
