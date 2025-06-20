@@ -5,81 +5,88 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const context = useContext(StoreContext);
+  const navigate = useNavigate();
 
-  // Safeguard: Check if context is undefined
+  // Check if context is missing
   if (!context) {
-    return <div>Error: StoreContext is not available. Please ensure the provider is set up.</div>;
+    return <div>Error: StoreContext not available. Please ensure the provider is correctly configured.</div>;
   }
 
-  const { cartItems, food_list, removeFromCart,getTotalCartAmount } = context;
- const navigate =useNavigate()
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } = context;
+  const totalAmount = getTotalCartAmount();
+  const deliveryFee = totalAmount === 0 ? 0 : 2;
+  const finalTotal = totalAmount + deliveryFee;
+
   return (
-    <div className='cart'>
-      <div className='cart-items'>
-        <div className='cart-items-title'>
-          <p>Items</p>
+    <div className="cart">
+      <div className="cart-items">
+        <div className="cart-items-title">
+          <p>Item</p>
           <p>Title</p>
           <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
           <p>Remove</p>
         </div>
-        <br />
         <hr />
+
         {food_list && Array.isArray(food_list) ? (
-          food_list.map((item, index) => {
-            if (cartItems[item._id] > 0) {
-              return (
-                <div key={index} className='cart-items-item'> {/* Add key prop */}
-                 <img src={item.image} alt=""/>
-                  
-                 
-                  <p>{item.name}</p> {/* Title column */}
-                  <p>${item.price}</p> {/* Price column */}
-                  <p>{cartItems[item._id]}</p> {/* Quantity column */}
-                  <p>${item.price * cartItems[item._id]}</p> {/* Total column */}
-                  <button onClick={() => removeFromCart(item._id)}>Remove</button> {/* Remove column */}
-                </div>
-              );
-            }
-            return null; // Return null for items not in cart
-          })
+          food_list.map((item) =>
+            cartItems[item._id] > 0 ? (
+              <div key={item._id} className="cart-items-item">
+                <img src={`${url}/uploads/${item.image}`} alt={item.name} />
+                <p>{item.name}</p>
+                <p>${item.price}</p>
+                <p>{cartItems[item._id]}</p>
+                <p>${(item.price * cartItems[item._id]).toFixed(2)}</p>
+                <button onClick={() => removeFromCart(item._id)}>Remove</button>
+              </div>
+            ) : null
+          )
         ) : (
           <p>No items in cart.</p>
         )}
       </div>
-       <div className="cart-bottom">
+
+      <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Total</h2>
           <div className="cart-total-details">
             <p>Subtotal</p>
-            <p>${getTotalCartAmount}</p>
+            <p>${totalAmount.toFixed(2)}</p>
           </div>
-          <hr/>
+          <hr />
           <div className="cart-total-details">
             <p>Delivery Fee</p>
-            <p>${getTotalCartAmount()===0?0:2}</p>
+            <p>${deliveryFee.toFixed(2)}</p>
           </div>
-          <hr/>
+          <hr />
           <div className="cart-total-details">
             <b>Total</b>
-            <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+            <b>${finalTotal.toFixed(2)}</b>
           </div>
-         
         </div>
-        <button type="button" onClick={() => navigate('/order')}>Proceed To Checkout</button>
-       </div>
-       <div className="cart-promocode">
+
+        <button
+          type="button"
+          disabled={totalAmount === 0}
+          onClick={() => navigate('/order')}
+        >
+          Proceed To Checkout
+        </button>
+      </div>
+
+      <div className="cart-promocode">
         <div>
-          <p>if you have promo code enter it here</p>
+          <p>If you have a promo code, enter it here:</p>
           <div className="cart-promocode-input">
-            <input type="text" placeholder='promo code'/>
+            <input type="text" placeholder="Promo code" />
             <button>Submit</button>
           </div>
-        </div> 
-       </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Cart
+export default Cart;
