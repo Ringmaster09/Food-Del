@@ -21,6 +21,7 @@ app.use('/uploads', express.static('uploads'));
 // ✅ API Routes
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
+app.use("/api/cart",cartRouter);
 
 // Root Route
 app.get('/', (req, res) => {
