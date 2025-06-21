@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
 import userRouter from './routes/userRoutes.js';
+import cartRouter from './routes/cartRoute.js';
+import paymentRouter from './routes/paymentRoutes.js'; // ✅
 
 dotenv.config();
 const app = express();
@@ -21,9 +23,9 @@ app.use('/uploads', express.static('uploads'));
 // ✅ API Routes
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
-app.use("/api/cart",cartRouter);
+app.use('/api/cart', cartRouter);
+app.use('/api/payment', paymentRouter); // ✅
 
-// Root Route
 app.get('/', (req, res) => {
   res.send('🍽️ Food Delivery API running...');
 });
